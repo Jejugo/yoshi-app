@@ -4,7 +4,7 @@ import '../../App.css';
 const Notifications = (props) => {
   return (
     <div>
-      teste
+      
     </div>
   )
 }

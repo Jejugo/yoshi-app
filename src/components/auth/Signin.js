@@ -3,24 +3,47 @@ import React, { Component } from 'react';
 class SignIn extends Component {
 
   state = {
+    textEmail: '',
+    textPassword: ''
+  }
 
+  handleChange = (e) => {
+
+    if(e.target.type === 'email'){
+      this.setState({
+        textEmail: e.target.value
+      });
+    }
+    else{
+      this.setState({
+        textPassword: e.target.value
+      });
+    }
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(this.state);
   }
 
   render() {
+
+    const {textEmail, textPassword} = this.state;
+
     return (
       <div className="container">
-        <form className="white" onSubmit={}>
+        <form style={{borderRadius: 5}}className="white" onSubmit={this.handleSubmit}>
           <h5 className="grey-text text-darken-3">Sign In</h5>
-          <div className="iput-field">
+          <div className="input-field">
             <label htmlFor="email">Email</label>
-            <input type="email" id="email" onChange={}/>
-          </div>
-          <div className="iput-field">
-            <label htmlFor="password">Email</label>
-            <input type="password" id="password" onChange={}/>
+            <input type="email" id="email" value={textEmail} onChange={this.handleChange}/>
           </div>
           <div className="input-field">
-            <button className="btn pink lighten-1 z-depth-0"></button>
+            <label htmlFor="password">Password</label>
+            <input type="password" id="password" value={textPassword} onChange={this.handleChange}/>
+          </div>
+          <div className="input-field">
+            <button className="btn pink lighten-1 z-depth-0">Login</button>
           </div>
         </form>
       </div>
